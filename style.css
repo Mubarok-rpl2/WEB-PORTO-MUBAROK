@@ -1,0 +1,149 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.pixel-font {
+    font-family: 'Press Start 2P', monospace;
+}
+
+.circle-loader {
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+/* ================= ANIMASI POKEBALL SHAKE ================= */
+@keyframes pokeballShake {
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(-15deg); }
+    30% { transform: rotate(15deg); }
+    45% { transform: rotate(-10deg); }
+    60% { transform: rotate(10deg); }
+    75% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.pokeball-shake-1 { animation: pokeballShake 2.5s ease-in-out infinite 0.0s; }
+.pokeball-shake-4 { animation: pokeballShake 2.5s ease-in-out infinite 0.4s; }
+.pokeball-shake-2 { animation: pokeballShake 2.5s ease-in-out infinite 0.8s; }
+.pokeball-shake-6 { animation: pokeballShake 2.5s ease-in-out infinite 1.2s; }
+.pokeball-shake-3 { animation: pokeballShake 2.5s ease-in-out infinite 1.6s; }
+.pokeball-shake-5 { animation: pokeballShake 2.5s ease-in-out infinite 2.0s; }
+
+/* Menghentikan animasi goyang sepenuhnya saat Pokéball terbuka */
+.pokeball-paused {
+    animation: none !important;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* ================= POSISI SEL ZYGARDE DI LOADING ================= */
+#cell-1 { top: 12%; left: 18%; }
+#cell-2 { top: 12%; right: 18%; }
+#cell-3 { bottom: 15%; right: 22%; }
+
+@keyframes pullCell1 { 
+    0% { transform: translate(0, 0) scale(1); opacity: 1; } 
+    100% { transform: translate(32vw, 32vh) scale(0.1); opacity: 0; } 
+}
+@keyframes pullCell2 { 
+    0% { transform: translate(0, 0) scale(1); opacity: 1; } 
+    100% { transform: translate(-32vw, 32vh) scale(0.1); opacity: 0; } 
+}
+@keyframes pullCell3 { 
+    0% { transform: translate(0, 0) scale(1); opacity: 1; } 
+    100% { transform: translate(-25vw, -28vh) scale(0.1); opacity: 0; } 
+}
+
+.pull-cell-1 { animation: pullCell1 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.pull-cell-2 { animation: pullCell2 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.pull-cell-3 { animation: pullCell3 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+
+@keyframes mediumAbsorption {
+    0% { transform: scale(0.3); opacity: 0; filter: brightness(3) drop-shadow(0 0 30px #22c55e); }
+    50% { transform: scale(1.35); opacity: 1; filter: brightness(2.5) drop-shadow(0 0 45px #22c55e); }
+    100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+}
+.medium-absorb-animation { animation: mediumAbsorption 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+@keyframes epicBoom {
+    0% { transform: scale(0.2); opacity: 0; filter: brightness(5) drop-shadow(0 0 90px white); }
+    40% { transform: scale(1.6); opacity: 1; filter: brightness(4) drop-shadow(0 0 70px #ffffff) drop-shadow(0 0 120px #22c55e); }
+    70% { transform: scale(0.9); filter: brightness(2); }
+    100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+}
+.epic-boom-animation { animation: epicBoom 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+@keyframes bannerZoomBounce {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.35); opacity: 1; }
+    80% { transform: scale(0.9); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.banner-zoom-animation { animation: bannerZoomBounce 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+@keyframes swirlAura {
+    0% { transform: rotate(0deg) scale(0.3); opacity: 1; }
+    100% { transform: rotate(360deg) scale(2.2); opacity: 0; }
+}
+.swirl-effect {
+    position: absolute; 
+    inset: -20px; 
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent, rgba(34, 197, 94, 0.9), #ffffff, transparent);
+    animation: swirlAura 0.8s ease-out forwards; 
+    pointer-events: none; 
+    z-index: 15;
+}
+
+.theme-btn { transition: transform 0.2s, filter 0.2s; }
+.theme-btn:hover { transform: scale(1.15); }
+.theme-btn.active { filter: drop-shadow(0 0 10px #22c55e); transform: scale(1.2); }
+
+/* ================= EFEK LASER / CAHAYA BIRU MENYALA ================= */
+@keyframes laserBeamBlue {
+    0% {
+        transform: scaleX(0) scaleY(0.5);
+        opacity: 0;
+    }
+    30% {
+        transform: scaleX(1.4) scaleY(2.5);
+        opacity: 1;
+        filter: drop-shadow(0 0 35px #3b82f6) drop-shadow(0 0 15px #93c5fd);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 0.95;
+    }
+}
+
+.laser-effect {
+    position: absolute;
+    height: 12px;
+    background: linear-gradient(90deg, transparent, rgba(147, 197, 253, 0.3), #3b82f6, rgba(147, 197, 253, 0.3), transparent);
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+
+.laser-active {
+    animation: laserBeamBlue 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
