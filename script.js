@@ -142,7 +142,6 @@ function setTheme(theme) {
 
     const body = document.getElementById('body-container');
     const heroSection = document.getElementById('hero-section');
-    const profileBox = document.getElementById('profile-box');
     const heroTitle = document.getElementById('hero-title');
     const heroDesc = document.getElementById('hero-desc');
     const cards = document.querySelectorAll('.content-card');
@@ -162,9 +161,10 @@ function setTheme(theme) {
     const heroRayquaza = document.getElementById('hero-rayquaza');
 
     if (theme === 'light') {
+        if (body) body.classList.add('light-mode'); // Mengaktifkan garis grid warna hitam di mode terang
+        
         if (body) { body.style.backgroundColor = '#ffffff'; body.style.color = '#0f172a'; }
         if (heroSection) heroSection.style.background = 'linear-gradient(to bottom, #f8fafc, #ffffff)';
-        if (profileBox) { profileBox.style.backgroundColor = '#f1f5f9'; profileBox.style.borderColor = '#cbd5e1'; }
         if (heroTitle) heroTitle.style.color = '#0f172a';
         if (heroDesc) heroDesc.style.color = '#475569';
         if (contactDesc) contactDesc.style.color = '#475569';
@@ -190,9 +190,10 @@ function setTheme(theme) {
         if (btnSolrock) btnSolrock.classList.add('active'); 
         if (btnLunatone) btnLunatone.classList.remove('active');
     } else {
+        if (body) body.classList.remove('light-mode'); // Mengembalikan garis grid warna putih di mode gelap
+
         if (body) { body.style.backgroundColor = '#020617'; body.style.color = '#f8fafc'; }
         if (heroSection) heroSection.style.background = 'linear-gradient(to bottom, #020617, #090d16)';
-        if (profileBox) { profileBox.style.backgroundColor = '#0f172a'; profileBox.style.borderColor = 'rgba(34, 197, 94, 0.6)'; }
         if (heroTitle) heroTitle.style.color = '#f8fafc';
         if (heroDesc) heroDesc.style.color = '#94a3b8';
         if (contactDesc) contactDesc.style.color = '#94a3b8';
@@ -217,5 +218,72 @@ function setTheme(theme) {
         
         if (btnLunatone) btnLunatone.classList.add('active'); 
         if (btnSolrock) btnSolrock.classList.remove('active');
+    }
+}
+
+// ================= PENANGANAN FORM KONTAK FORMSPREE =================
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('poke-contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Mencegah perpindahan halaman bawaan browser
+
+            // Ubah teks tombol saat sedang mengirim
+            if (submitBtn) {
+                submitBtn.innerText = 'MENGIRIM...';
+                submitBtn.disabled = true;
+            }
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Munculkan notifikasi berhasil
+                    alert('✨ Pesan terkirim via Poké-Com!');
+                    
+                    // Reset (kosongkan) semua isian form
+                    contactForm.reset();
+                } else {
+                    alert('⚠️ Gagal mengirim pesan. Silakan coba lagi.');
+                }
+            } catch (error) {
+                alert('⚠️ Terjadi kesalahan jaringan. Periksa koneksi internetmu!');
+            } finally {
+                // Kembalikan tombol ke keadaan semula
+                if (submitBtn) {
+                    submitBtn.innerText = 'KIRIM PESAN';
+                    submitBtn.disabled = false;
+                }
+            }
+        });
+    }
+});
+
+// ================= MOBILE SIDEBAR / DROPDOWN MENU =================
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('mobile-sidebar');
+    const overlay = document.getElementById('menu-overlay');
+    
+    if (sidebar && overlay) {
+        // Cek apakah sidebar sedang tertutup (posisi tergeser ke kanan)
+        const isOpen = !sidebar.classList.contains('translate-x-full');
+        
+        if (isOpen) {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        } else {
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+        }
     }
 }

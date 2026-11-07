@@ -15,10 +15,10 @@
     <nav class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur border-b border-slate-800 px-6 py-4 flex justify-between items-center shadow-lg">
         <div class="flex items-center gap-3">
             <span class="inline-block w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="pixel-font text-xs md:text-sm text-emerald-400">PORTOFOLIO MUHAMMAD MUBAROK</span>
+            <span class="pixel-font text-xs md:text-sm text-emerald-400">MUBAROK</span>
         </div>
         
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4">
             <div class="hidden md:flex gap-6 text-sm font-semibold text-slate-300">
                 <a href="index.html#hero-section" class="hover:text-emerald-400 transition">Home</a>
                 <a href="index.html#about" class="hover:text-emerald-400 transition">About</a>
@@ -35,129 +35,160 @@
                     <img src="image/lunatone.png" alt="Lunatone" class="w-full h-full object-contain pointer-events-none">
                 </button>
             </div>
+
+            <!-- Tombol Hamburger khusus Mobile -->
+            <button onclick="toggleMobileMenu()" id="menu-btn" class="md:hidden text-emerald-400 focus:outline-none p-1 cursor-pointer">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
     </nav>
 
-    <!-- Projects Content Section -->
-    <main class="py-12 px-6 max-w-5xl mx-auto w-full text-center">
-        <h1 id="project-main-title" class="pixel-font text-2xl md:text-4xl mb-4 text-slate-100 transition-colors duration-400">
-            Projects 
-        </h1>
-        <p id="project-main-desc" class="text-sm md:text-base text-slate-400 mb-10 transition-colors duration-400">
-            Klik masing-masing Pokéball di bawah untuk memanggil project secara mandiri!
-        </p>
+    <!-- Sidebar / Dropdown khusus Mobile -->
+    <div id="mobile-sidebar" class="fixed inset-y-0 right-0 z-50 w-64 bg-slate-900 border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col p-6">
+        <div class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
+            <span class="pixel-font text-xs text-emerald-400">MENU NAVIGASI</span>
+            <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-emerald-400 text-xl font-bold cursor-pointer">✕</button>
+        </div>
+        
+        <div class="flex flex-col gap-5 text-base font-semibold text-slate-300">
+            <a href="index.html#hero-section" class="hover:text-emerald-400 transition py-2 border-b border-slate-800/50">Home</a>
+            <a href="index.html#about" class="hover:text-emerald-400 transition py-2 border-b border-slate-800/50">About</a>
+            <a href="index.html#skills" class="hover:text-emerald-400 transition py-2 border-b border-slate-800/50">Skills</a>
+            <a href="projects.html" class="text-emerald-400 transition py-2 border-b border-slate-800/50">Projects</a>
+            <a href="index.html#contact" class="hover:text-emerald-400 transition py-2">Contact</a>
+        </div>
+    </div>
+    <div id="menu-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/60 z-40 hidden md:hidden transition-opacity"></div>
 
-        <!-- Grid 6 Pokéball -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-            
-            <!-- Pokéball 1 -->
-            <div onclick="togglePokeball(1)" class="content-card cursor-pointer group relative overflow-hidden bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-emerald-400 shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                <div id="laser-1" class="laser-effect"></div>
-                <img id="pokeball-img-1" src="image/pokeball tertutup.png" alt="Pokeball 1" class="w-24 h-24 object-contain pokeball-shake-1 mb-2 transition-transform group-hover:scale-105 pointer-events-none relative z-20">
+    <!-- Projects Content Section (Background Grid Full Layar) -->
+    <main class="py-12 px-6 w-full text-center relative overflow-hidden flex-grow flex flex-col justify-center">
+        <!-- Background Efek Grid Diagonal Full Screen -->
+        <div class="diagonal-grid-bg"></div>
+
+        <!-- Konten dibungkus agar lebarnya rapi di tengah -->
+        <div class="max-w-5xl mx-auto w-full relative z-10">
+            <h1 id="project-main-title" class="pixel-font text-2xl md:text-4xl mb-4 text-slate-100 transition-colors duration-400">
+                Projects 
+            </h1>
+            <p id="project-main-desc" class="text-sm md:text-base text-slate-400 mb-12 transition-colors duration-400">
+                Klik masing-masing Pokéball di bawah untuk memanggil project secara mandiri!
+            </p>
+
+            <!-- Grid 6 Pokéball -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-left items-start">
                 
-                <div id="project-card-1" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20">
-                    <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
-                        <img src="image/Pir Sensor (1).png" alt="Preview 1" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="card-title text-base font-bold text-slate-100 mb-1">Arduino PIR Sensor</h3>
-                    <p class="card-desc text-xs text-slate-400 mb-4">Proyek simulasi sensor PIR menggunakan Arduino Uno di Tinkercad.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">TinkerCad</span>
-                        <a href="https://www.tinkercad.com/things/8vjTDdbDC0A-pir-sensor/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fclassrooms%2F4fTdzclr6Ih%2Factivities%2F6k00bvCHEhm%3Fview%3Dwork%26type%3Dall&sharecode=D2i7RNirMCyNBmhjNUzhmTp2DTyxA_tUN6ITy_c9I2Y" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                <!-- Pokéball 1 -->
+                <div onclick="togglePokeball(1)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                    <div id="laser-1" class="laser-effect"></div>
+                    <img id="pokeball-img-1" src="image/pokeball tertutup.png" alt="Pokeball 1" class="w-28 h-28 object-contain pokeball-shake-1 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
+                    
+                    <div id="project-card-1" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                        <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
+                            <img src="image/Pir Sensor (1).png" alt="Preview 1" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="card-title text-base font-bold text-slate-100 mb-1">Arduino PIR Sensor</h3>
+                        <p class="card-desc text-xs text-slate-400 mb-4">Proyek simulasi sensor PIR menggunakan Arduino Uno di Tinkercad.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">TinkerCad</span>
+                            <a href="https://www.tinkercad.com/things/8vjTDdbDC0A-pir-sensor/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fclassrooms%2F4fTdzclr6Ih%2Factivities%2F6k00bvCHEhm%3Fview%3Dwork%26type%3Dall&sharecode=D2i7RNirMCyNBmhjNUzhmTp2DTyxA_tUN6ITy_c9I2Y" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Pokéball 2 -->
-            <div onclick="togglePokeball(2)" class="content-card cursor-pointer group relative overflow-hidden bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-emerald-400 shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                <div id="laser-2" class="laser-effect"></div>
-                <img id="pokeball-img-2" src="image/pokeball tertutup.png" alt="Pokeball 2" class="w-24 h-24 object-contain pokeball-shake-2 mb-2 transition-transform group-hover:scale-105 pointer-events-none relative z-20">
-                
-                <div id="project-card-2" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20">
-                    <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
-                        <img src="image/FigmaEmailPage.png" alt="Preview 2" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="card-title text-base font-bold text-slate-100 mb-1">Login page</h3>
-                    <p class="card-desc text-xs text-slate-400 mb-4">Membuat Login page yang interaktif menggunakan Figma.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">Figma</span>
-                        <a href="https://www.figma.com/proto/fborL6iDstKHCRp3ilhnBN/Tugas-FIGMA-Login-Page?node-id=0-1&t=0AmWempXuw2DlAMj-1" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                <!-- Pokéball 2 -->
+                <div onclick="togglePokeball(2)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                    <div id="laser-2" class="laser-effect"></div>
+                    <img id="pokeball-img-2" src="image/pokeball tertutup.png" alt="Pokeball 2" class="w-28 h-28 object-contain pokeball-shake-2 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
+                    
+                    <div id="project-card-2" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                        <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
+                            <img src="image/FigmaEmailPage.png" alt="Preview 2" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="card-title text-base font-bold text-slate-100 mb-1">Login page</h3>
+                        <p class="card-desc text-xs text-slate-400 mb-4">Membuat Login page yang interaktif menggunakan Figma.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">Figma</span>
+                            <a href="https://www.figma.com/proto/fborL6iDstKHCRp3ilhnBN/Tugas-FIGMA-Login-Page?node-id=0-1&t=0AmWempXuw2DlAMj-1" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Pokéball 3 -->
-            <div onclick="togglePokeball(3)" class="content-card cursor-pointer group relative overflow-hidden bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-emerald-400 shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                <div id="laser-3" class="laser-effect"></div>
-                <img id="pokeball-img-3" src="image/pokeball tertutup.png" alt="Pokeball 3" class="w-24 h-24 object-contain pokeball-shake-3 mb-2 transition-transform group-hover:scale-105 pointer-events-none relative z-20">
-                
-                <div id="project-card-3" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20">
-                    <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
-                        <img src="image/sipalab.png" alt="Preview 3" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="card-title text-base font-bold text-slate-100 mb-1">Sipalab</h3>
-                    <p class="card-desc text-xs text-slate-400 mb-4">Sistem perpustakaan, seperti peminjaman buku.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">MySQL</span>
-                        <a href="https://sipalab.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                <!-- Pokéball 3 -->
+                <div onclick="togglePokeball(3)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                    <div id="laser-3" class="laser-effect"></div>
+                    <img id="pokeball-img-3" src="image/pokeball tertutup.png" alt="Pokeball 3" class="w-28 h-28 object-contain pokeball-shake-3 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
+                    
+                    <div id="project-card-3" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                        <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
+                            <img src="image/sipalab.png" alt="Preview 3" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="card-title text-base font-bold text-slate-100 mb-1">Sipalab</h3>
+                        <p class="card-desc text-xs text-slate-400 mb-4">Sistem perpustakaan, seperti peminjaman buku.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">MySQL</span>
+                            <a href="https://sipalab.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Pokéball 4 -->
-            <div onclick="togglePokeball(4)" class="content-card cursor-pointer group relative overflow-hidden bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-emerald-400 shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                <div id="laser-4" class="laser-effect"></div>
-                <img id="pokeball-img-4" src="image/pokeball tertutup.png" alt="Pokeball 4" class="w-24 h-24 object-contain pokeball-shake-4 mb-2 transition-transform group-hover:scale-105 pointer-events-none relative z-20">
-                
-                <div id="project-card-4" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20">
-                    <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
-                        <img src="image/Web sekolah.png" alt="Preview 4" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="card-title text-base font-bold text-slate-100 mb-1">Website Profil sekolah</h3>
-                    <p class="card-desc text-xs text-slate-400 mb-4">Aplikasi berisi tentang kegiatan, lomba, dll tentang sekolah SMK Wikrama Bogor.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">HTML</span>
-                        <a href="https://webprofilsekolah.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                <!-- Pokéball 4 -->
+                <div onclick="togglePokeball(4)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                    <div id="laser-4" class="laser-effect"></div>
+                    <img id="pokeball-img-4" src="image/pokeball tertutup.png" alt="Pokeball 4" class="w-28 h-28 object-contain pokeball-shake-4 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
+                    
+                    <div id="project-card-4" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                        <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
+                            <img src="image/Web sekolah.png" alt="Preview 4" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="card-title text-base font-bold text-slate-100 mb-1">Website Profil sekolah</h3>
+                        <p class="card-desc text-xs text-slate-400 mb-4">Aplikasi berisi tentang kegiatan, lomba, dll tentang sekolah SMK Wikrama Bogor.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">HTML</span>
+                            <a href="https://webprofilsekolah.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Pokéball 5 -->
-            <div onclick="togglePokeball(5)" class="content-card cursor-pointer group relative overflow-hidden bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-emerald-400 shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                <div id="laser-5" class="laser-effect"></div>
-                <img id="pokeball-img-5" src="image/pokeball tertutup.png" alt="Pokeball 5" class="w-24 h-24 object-contain pokeball-shake-5 mb-2 transition-transform group-hover:scale-105 pointer-events-none relative z-20">
-                
-                <div id="project-card-5" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20">
-                    <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
-                        <img src="image/python.png" alt="Preview 5" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="card-title text-base font-bold text-slate-100 mb-1">Kalkulator sederhana</h3>
-                    <p class="card-desc text-xs text-slate-400 mb-4">Kalkulator sederhana yang dibuat dengan bahasa pemrograman Python.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">Python</span>
-                        <a href="https://drive.google.com/drive/folders/1N-mNhc8UmTQwvK2114Lpnx9VVSEkmZeQ?usp=sharing" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                <!-- Pokéball 5 -->
+                <div onclick="togglePokeball(5)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                    <div id="laser-5" class="laser-effect"></div>
+                    <img id="pokeball-img-5" src="image/pokeball tertutup.png" alt="Pokeball 5" class="w-28 h-28 object-contain pokeball-shake-5 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
+                    
+                    <div id="project-card-5" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                        <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
+                            <img src="image/python.png" alt="Preview 5" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="card-title text-base font-bold text-slate-100 mb-1">Kalkulator sederhana</h3>
+                        <p class="card-desc text-xs text-slate-400 mb-4">Kalkulator sederhana yang dibuat dengan bahasa pemrograman Python.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">Python</span>
+                            <a href="https://drive.google.com/drive/folders/1N-mNhc8UmTQwvK2114Lpnx9VVSEkmZeQ?usp=sharing" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Pokéball 6 -->
-            <div onclick="togglePokeball(6)" class="content-card cursor-pointer group relative overflow-hidden bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-emerald-400 shadow-xl transition-all duration-300 flex flex-col items-center text-center">
-                <div id="laser-6" class="laser-effect"></div>
-                <img id="pokeball-img-6" src="image/pokeball tertutup.png" alt="Pokeball 6" class="w-24 h-24 object-contain pokeball-shake-6 mb-2 transition-transform group-hover:scale-105 pointer-events-none relative z-20">
-                
-                <div id="project-card-6" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20">
-                    <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
-                        <img src="image/kopikenangan.png" alt="Preview 6" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="card-title text-base font-bold text-slate-100 mb-1">Recreate website KopiKenangan</h3>
-                    <p class="card-desc text-xs text-slate-400 mb-4">Sistem komunikasi pesan instan antar trainer jarak jauh.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">Node.js</span>
-                        <a href="https://landing-page-mubarok-v72.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                <!-- Pokéball 6 -->
+                <div onclick="togglePokeball(6)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                    <div id="laser-6" class="laser-effect"></div>
+                    <img id="pokeball-img-6" src="image/pokeball tertutup.png" alt="Pokeball 6" class="w-28 h-28 object-contain pokeball-shake-6 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
+                    
+                    <div id="project-card-6" class="w-full opacity-0 max-h-0 overflow-hidden transition-all duration-500 text-left border-t border-slate-800 pt-4 mt-2 pointer-events-auto relative z-20 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                        <div class="w-full h-32 bg-slate-950 rounded-lg overflow-hidden mb-3 border border-slate-800 flex items-center justify-center">
+                            <img src="image/kopikenangan.png" alt="Preview 6" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="card-title text-base font-bold text-slate-100 mb-1">Recreate website KopiKenangan</h3>
+                        <p class="card-desc text-xs text-slate-400 mb-4">Sistem komunikasi pesan instan antar trainer jarak jauh.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">HTML</span>
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">CSS</span>
+                            <a href="https://landing-page-mubarok-v72.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </main>
 
@@ -165,64 +196,73 @@
         <div class="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center gap-4">
             <p class="text-xs text-emerald-400">TERHUBUNG DENGAN SAYA</p>
             
-            <!-- Kotak Ikon Sosial Media -->
-                <div class="flex items-center justify-center gap-4">
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/he_comes_and_goes?srtk=MTh6bXRpN2lubmh4MQ==" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl flex items-center justify-center transition-transform hover:scale-110 shadow-md p-2">
-                        <img src="image/loho instagram.png" alt="Instagram" class="w-full h-full object-contain pointer-events-none rounded-lg">
-                    </a>
-                    <!-- Threads -->
-                    <a href="https://www.threads.com/@he_comes_and_goes" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl flex items-center justify-center transition-transform hover:scale-110 shadow-md p-2">
-                        <img src="image/logo threads.png" alt="Threads" class="w-full h-full object-contain pointer-events-none rounded-lg">
-                    </a>
-                    <!-- YouTube -->
-                    <a href="https://www.youtube.com/@M.Mubarok-i4t" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl flex items-center justify-center transition-transform hover:scale-110 shadow-md p-2">
-                        <img src="image/logo youtube.png" alt="YouTube" class="w-full h-full object-contain pointer-events-none rounded-lg">
-                    </a>
-                </div>
+            <div class="flex items-center justify-center gap-4">
+                <a href="https://www.instagram.com/he_comes_and_goes?srtk=MTh6bXRpN2lubmh4MQ==" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl flex items-center justify-center transition-transform hover:scale-110 shadow-md p-2">
+                    <img src="image/loho instagram.png" alt="Instagram" class="w-full h-full object-contain pointer-events-none rounded-lg">
+                </a>
+                <a href="https://www.threads.com/@he_comes_and_goes" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl flex items-center justify-center transition-transform hover:scale-110 shadow-md p-2">
+                    <img src="image/logo threads.png" alt="Threads" class="w-full h-full object-contain pointer-events-none rounded-lg">
+                </a>
+                <a href="https://www.youtube.com/@M.Mubarok-i4t" target="_blank" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl flex items-center justify-center transition-transform hover:scale-110 shadow-md p-2">
+                    <img src="image/logo youtube.png" alt="YouTube" class="w-full h-full object-contain pointer-events-none rounded-lg">
+                </a>
+            </div>
 
             <p class="text-[10px] text-slate-500 mt-2">© 2026 Muhammad Mubarok.</p>
         </div>
     </footer>
 
-    <!-- SCRIPT LANGSUNG DITULIS DI SINI SUPAYA PASTI JALAN -->
     <script>
         const openPokeballs = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
 
         function togglePokeball(id) {
-    const img = document.getElementById(`pokeball-img-${id}`);
-    const card = document.getElementById(`project-card-${id}`);
-    const laser = document.getElementById(`laser-${id}`); // Ambil elemen laser
+            const img = document.getElementById(`pokeball-img-${id}`);
+            const card = document.getElementById(`project-card-${id}`);
+            const laser = document.getElementById(`laser-${id}`);
 
-    if (!openPokeballs[id]) {
-        if (img) {
-            img.src = "image/pokeball terbuka.png";
-            img.classList.add('pokeball-paused');
-        }
-        
-        // Picu animasi laser
-        if (laser) {
-            laser.classList.add('laser-active');
-            setTimeout(() => laser.classList.remove('laser-active'), 400);
+            if (!openPokeballs[id]) {
+                if (img) {
+                    img.src = "image/pokeball terbuka.png";
+                    img.classList.add('pokeball-paused');
+                }
+                
+                if (laser) {
+                    laser.classList.add('laser-active');
+                    setTimeout(() => laser.classList.remove('laser-active'), 400);
+                }
+
+                if (card) {
+                    card.style.maxHeight = "400px";
+                    card.style.opacity = "1";
+                }
+                openPokeballs[id] = true;
+            } else {
+                if (img) {
+                    img.src = "image/pokeball tertutup.png";
+                    img.classList.remove('pokeball-paused');
+                }
+                if (card) {
+                    card.style.maxHeight = "0px";
+                    card.style.opacity = "0";
+                }
+                openPokeballs[id] = false;
+            }
         }
 
-        if (card) {
-            card.style.maxHeight = "400px";
-            card.style.opacity = "1";
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('menu-overlay');
+            if (sidebar && overlay) {
+                const isOpen = !sidebar.classList.contains('translate-x-full');
+                if (isOpen) {
+                    sidebar.classList.add('translate-x-full');
+                    overlay.classList.add('hidden');
+                } else {
+                    sidebar.classList.remove('translate-x-full');
+                    overlay.classList.remove('hidden');
+                }
+            }
         }
-        openPokeballs[id] = true;
-    } else {
-        if (img) {
-            img.src = "image/pokeball tertutup.png";
-            img.classList.remove('pokeball-paused');
-        }
-        if (card) {
-            card.style.maxHeight = "0px";
-            card.style.opacity = "0";
-        }
-        openPokeballs[id] = false;
-    }
-}
 
         function setTheme(theme) {
             sessionStorage.setItem('currentTheme', theme);
@@ -237,7 +277,11 @@
             const projectMainDesc = document.getElementById('project-main-desc');
 
             if (theme === 'light') {
-                if (body) { body.style.backgroundColor = '#ffffff'; body.style.color = '#0f172a'; }
+                if (body) {
+                    body.classList.add('light-mode'); // Mengaktifkan garis grid warna hitam di mode terang
+                    body.style.backgroundColor = '#ffffff'; 
+                    body.style.color = '#0f172a';
+                }
                 if (projectMainTitle) projectMainTitle.style.color = '#0f172a';
                 if (projectMainDesc) projectMainDesc.style.color = '#475569';
 
@@ -251,7 +295,11 @@
                 if (btnSolrock) btnSolrock.classList.add('active'); 
                 if (btnLunatone) btnLunatone.classList.remove('active');
             } else {
-                if (body) { body.style.backgroundColor = '#020617'; body.style.color = '#f8fafc'; }
+                if (body) {
+                    body.classList.remove('light-mode'); // Mengembalikan garis grid warna putih di mode gelap
+                    body.style.backgroundColor = '#020617'; 
+                    body.style.color = '#f8fafc';
+                }
                 if (projectMainTitle) projectMainTitle.style.color = '#f8fafc';
                 if (projectMainDesc) projectMainDesc.style.color = '#94a3b8';
 
@@ -266,6 +314,7 @@
                 if (btnSolrock) btnSolrock.classList.remove('active');
             }
         }
+        
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = sessionStorage.getItem('currentTheme') || 'dark';
