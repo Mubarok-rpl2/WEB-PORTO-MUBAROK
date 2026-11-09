@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     // Munculkan notifikasi berhasil
-                    alert('✨ Pesan terkirim via Poké-Com!');
+                    alert('✨ Pesan terkirim!');
                     
                     // Reset (kosongkan) semua isian form
                     contactForm.reset();
