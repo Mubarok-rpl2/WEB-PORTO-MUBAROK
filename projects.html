@@ -11,11 +11,21 @@
 </head>
 <body id="body-container" class="min-h-screen transition-colors duration-400 flex flex-col justify-between" style="background-color: #020617; color: #f8fafc;">
 
+    <!-- Elemen Audio untuk Efek Suara Pokéball -->
+    <!-- Sound 1: Membuka Pokéball (Link 1) -->
+    <audio id="sound-open" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/pokemon-pokeball-open.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Sound 2: Menutup/Memasukkan Pokéball (Link 2) -->
+    <audio id="sound-close" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/pokeball-closing.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Navbar -->
     <nav class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur border-b border-slate-800 px-6 py-4 flex justify-between items-center shadow-lg">
         <div class="flex items-center gap-3">
             <span class="inline-block w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="pixel-font text-xs md:text-sm text-emerald-400">MUBAROK</span>
+            <span class="pixel-font text-xs md:text-sm text-emerald-400">PORTOFOLIO MUHAMMAD MUBAROK</span>
         </div>
         
         <div class="flex items-center gap-4">
@@ -56,18 +66,17 @@
             <a href="index.html#hero-section" class="hover:text-emerald-400 transition py-2 border-b border-slate-800/50">Home</a>
             <a href="index.html#about" class="hover:text-emerald-400 transition py-2 border-b border-slate-800/50">About</a>
             <a href="index.html#skills" class="hover:text-emerald-400 transition py-2 border-b border-slate-800/50">Skills</a>
-            <a href="projects.html" class="text-emerald-400 transition py-2 border-b border-slate-800/50">Projects</a>
+            <a href="projects.html" class="text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-800/50">Projects</a>
             <a href="index.html#contact" class="hover:text-emerald-400 transition py-2">Contact</a>
         </div>
     </div>
     <div id="menu-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/60 z-40 hidden md:hidden transition-opacity"></div>
 
-    <!-- Projects Content Section (Background Grid Full Layar) -->
+    <!-- Projects Content Section (Full Screen Grid) -->
     <main class="py-12 px-6 w-full text-center relative overflow-hidden flex-grow flex flex-col justify-center">
-        <!-- Background Efek Grid Diagonal Full Screen -->
+        <!-- Background Efek Grid Diagonal -->
         <div class="diagonal-grid-bg"></div>
 
-        <!-- Konten dibungkus agar lebarnya rapi di tengah -->
         <div class="max-w-5xl mx-auto w-full relative z-10">
             <h1 id="project-main-title" class="pixel-font text-2xl md:text-4xl mb-4 text-slate-100 transition-colors duration-400">
                 Projects 
@@ -80,7 +89,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-left items-start">
                 
                 <!-- Pokéball 1 -->
-                <div onclick="togglePokeball(1)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                <div id="pokeball-container-1" onclick="togglePokeball(1)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
                     <div id="laser-1" class="laser-effect"></div>
                     <img id="pokeball-img-1" src="image/pokeball tertutup.png" alt="Pokeball 1" class="w-28 h-28 object-contain pokeball-shake-1 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
                     
@@ -98,7 +107,7 @@
                 </div>
 
                 <!-- Pokéball 2 -->
-                <div onclick="togglePokeball(2)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                <div id="pokeball-container-2" onclick="togglePokeball(2)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
                     <div id="laser-2" class="laser-effect"></div>
                     <img id="pokeball-img-2" src="image/pokeball tertutup.png" alt="Pokeball 2" class="w-28 h-28 object-contain pokeball-shake-2 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
                     
@@ -116,7 +125,7 @@
                 </div>
 
                 <!-- Pokéball 3 -->
-                <div onclick="togglePokeball(3)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                <div id="pokeball-container-3" onclick="togglePokeball(3)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
                     <div id="laser-3" class="laser-effect"></div>
                     <img id="pokeball-img-3" src="image/pokeball tertutup.png" alt="Pokeball 3" class="w-28 h-28 object-contain pokeball-shake-3 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
                     
@@ -134,7 +143,7 @@
                 </div>
 
                 <!-- Pokéball 4 -->
-                <div onclick="togglePokeball(4)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                <div id="pokeball-container-4" onclick="togglePokeball(4)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
                     <div id="laser-4" class="laser-effect"></div>
                     <img id="pokeball-img-4" src="image/pokeball tertutup.png" alt="Pokeball 4" class="w-28 h-28 object-contain pokeball-shake-4 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
                     
@@ -152,7 +161,7 @@
                 </div>
 
                 <!-- Pokéball 5 -->
-                <div onclick="togglePokeball(5)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                <div id="pokeball-container-5" onclick="togglePokeball(5)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
                     <div id="laser-5" class="laser-effect"></div>
                     <img id="pokeball-img-5" src="image/pokeball tertutup.png" alt="Pokeball 5" class="w-28 h-28 object-contain pokeball-shake-5 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
                     
@@ -170,7 +179,7 @@
                 </div>
 
                 <!-- Pokéball 6 -->
-                <div onclick="togglePokeball(6)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
+                <div id="pokeball-container-6" onclick="togglePokeball(6)" class="cursor-pointer group relative overflow-hidden p-4 flex flex-col items-center text-center transition-all duration-300">
                     <div id="laser-6" class="laser-effect"></div>
                     <img id="pokeball-img-6" src="image/pokeball tertutup.png" alt="Pokeball 6" class="w-28 h-28 object-contain pokeball-shake-6 mb-3 transition-transform group-hover:scale-110 pointer-events-none relative z-20 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]">
                     
@@ -181,8 +190,7 @@
                         <h3 class="card-title text-base font-bold text-slate-100 mb-1">Recreate website KopiKenangan</h3>
                         <p class="card-desc text-xs text-slate-400 mb-4">Sistem komunikasi pesan instan antar trainer jarak jauh.</p>
                         <div class="flex items-center justify-between">
-                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">HTML</span>
-                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">CSS</span>
+                            <span class="inline-block bg-slate-800 text-emerald-300 text-[10px] px-2 py-1 rounded">Node.js</span>
                             <a href="https://landing-page-mubarok-v72.vercel.app" target="_blank" class="pixel-font text-[10px] bg-emerald-500 text-slate-950 px-3 py-1 rounded font-bold hover:bg-emerald-600">DEMO ➔</a>
                         </div>
                     </div>
@@ -214,13 +222,26 @@
 
     <script>
         const openPokeballs = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
+        const isLocked = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
 
         function togglePokeball(id) {
+            if (isLocked[id]) return; // Cegah spam klik selama sound sedang diputar
+
             const img = document.getElementById(`pokeball-img-${id}`);
             const card = document.getElementById(`project-card-${id}`);
             const laser = document.getElementById(`laser-${id}`);
+            const soundOpen = document.getElementById('sound-open');
+            const soundClose = document.getElementById('sound-close');
+
+            isLocked[id] = true; // Kunci Pokéball
 
             if (!openPokeballs[id]) {
+                // MEMBUKA POKEBALL (Keluar Proyek)
+                if (soundOpen) {
+                    soundOpen.currentTime = 0;
+                    soundOpen.play().catch(e => console.log("Audio play blocked:", e));
+                }
+
                 if (img) {
                     img.src = "image/pokeball terbuka.png";
                     img.classList.add('pokeball-paused');
@@ -236,7 +257,18 @@
                     card.style.opacity = "1";
                 }
                 openPokeballs[id] = true;
+                sessionStorage.setItem(`pokeball_${id}_open`, 'true'); // Simpan status terbuka
+
+                // Buka kunci setelah durasi sound selesai (~2 detik)
+                setTimeout(() => { isLocked[id] = false; }, 2000);
+
             } else {
+                // MENUTUP POKEBALL (Memasukkan Kembali Proyek)
+                if (soundClose) {
+                    soundClose.currentTime = 0;
+                    soundClose.play().catch(e => console.log("Audio play blocked:", e));
+                }
+
                 if (img) {
                     img.src = "image/pokeball tertutup.png";
                     img.classList.remove('pokeball-paused');
@@ -246,8 +278,34 @@
                     card.style.opacity = "0";
                 }
                 openPokeballs[id] = false;
+                sessionStorage.removeItem(`pokeball_${id}_open`); // Hapus status tersimpan
+
+                // Buka kunci setelah durasi sound selesai (~2 detik)
+                setTimeout(() => { isLocked[id] = false; }, 2000);
             }
         }
+
+        // Memulihkan status terbuka otomatis saat kembali dari halaman Demo/Vercel
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = sessionStorage.getItem('currentTheme') || 'dark';
+            setTheme(savedTheme);
+
+            for (let i = 1; i <= 6; i++) {
+                if (sessionStorage.getItem(`pokeball_${i}_open`) === 'true') {
+                    openPokeballs[i] = true;
+                    const img = document.getElementById(`pokeball-img-${i}`);
+                    const card = document.getElementById(`project-card-${i}`);
+                    if (img) {
+                        img.src = "image/pokeball terbuka.png";
+                        img.classList.add('pokeball-paused');
+                    }
+                    if (card) {
+                        card.style.maxHeight = "400px";
+                        card.style.opacity = "1";
+                    }
+                }
+            }
+        });
 
         function toggleMobileMenu() {
             const sidebar = document.getElementById('mobile-sidebar');
@@ -278,7 +336,7 @@
 
             if (theme === 'light') {
                 if (body) {
-                    body.classList.add('light-mode'); // Mengaktifkan garis grid warna hitam di mode terang
+                    body.classList.add('light-mode');
                     body.style.backgroundColor = '#ffffff'; 
                     body.style.color = '#0f172a';
                 }
@@ -296,7 +354,7 @@
                 if (btnLunatone) btnLunatone.classList.remove('active');
             } else {
                 if (body) {
-                    body.classList.remove('light-mode'); // Mengembalikan garis grid warna putih di mode gelap
+                    body.classList.remove('light-mode');
                     body.style.backgroundColor = '#020617'; 
                     body.style.color = '#f8fafc';
                 }
@@ -314,12 +372,6 @@
                 if (btnSolrock) btnSolrock.classList.remove('active');
             }
         }
-        
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = sessionStorage.getItem('currentTheme') || 'dark';
-            setTheme(savedTheme);
-        });
     </script>
 </body>
 </html>
